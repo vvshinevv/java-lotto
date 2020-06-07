@@ -54,10 +54,15 @@ public class LottoMachine {
     }
 
     private List<Lotto> extractManualLotto(Integer countOfLotto) {
+        if (countOfLotto.equals(0)) {
+            return new ArrayList<>();
+        }
+
         return extractLotto(countOfLotto, this.manualLottoExtractor, getManualLotto());
     }
 
     private List<Integer> getManualLotto() {
+        this.lottoView.outputManualLottoMessage();
         String manualLotto = this.lottoView.inputManualLotto();
         return LottoViewHelper.manipulateInputLottoNumbers(manualLotto);
     }
